@@ -1,0 +1,80 @@
+\documentclass[fleqn, 10pt]{article}
+
+
+% Paquetes necesarios
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm, amsmath}
+\usepackage{nccmath} %Para centrar ecuaciones
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+% Personalizo mi alfabeto
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\newcommand{\Lb}{\pazocal{L}}
+
+% Definimos los entornos para definiciones, teoremas, etc...
+\theoremstyle{plain}
+\newtheorem{proposicion}{Proposición}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{example}{Ejemplo}[section]
+
+%Definimos el título
+\title{Teoría de Autómatas y Lenguajes Formales\\[.4\baselineskip]Práctica 2: Latex y Autómatas}
+\author{Athenea, Martin Moreno}
+\date{\today}
+
+%Comienzo del documento
+\begin{document}
+
+\maketitle
+
+\section{Deterministic finite automata}
+
+\begin{definition}{Deterministic finite automaton \translation{autómata finito determinista}}
+
+A deterministic finite automaton (DFA) is a 5-tuple $(K, \Sigma, \delta,s, F)$, where
+\begin{enumerate}[label=]
+\item $K$ is a non-empty set of states $\{q0,q1,q2\}$
+\item $\Sigma$ is an alphabet $\{a,b\}$
+\item $s \in K$ is the initial state $q0$
+\item $F \subseteq K$ is a set of final states $\{q1\}$
+\item $\delta: K \times \Sigma \to K$ is the transition function 
+\item $\delta: (q0, a, q1),(q0, b, q2),(q1, a, q2),(q1, b, q2),(q2, a, q2),(q2, b, q2) $
+\end{enumerate}
+\end{definition} 
+
+\newpage
+\begin{example}
+Autómata en JFLAP
+\begin{figure}
+    \centering
+    \includegraphics[width=.9\textwidth]{automatatalf.png}
+    \caption{Autómata Finito Determinista}
+    \label{fig:my_label}
+\end{figure}
+\end{example}
+
+\begin{example}
+Autómata en Oracle
+
+\begin{verbatim}
+     {
+    "name" : "a",
+    "representation" : {
+      "K" : ["q0", "q1", "q2"],
+      "A" : ["a", "b"],
+      "s" : "q0",
+      "F" : ["q1"],
+      "t" : [["q0", "a", "q1"],
+             ["q0", "b", "q2"],
+             ["q1", "a", "q2"],
+             ["q1", "b", "q2"],
+             ["q2", "a", "q2"],
+             ["q2", "b", "q2"]]
+      }
+  },
+\end{verbatim}
+\end{example}
+\end {document}

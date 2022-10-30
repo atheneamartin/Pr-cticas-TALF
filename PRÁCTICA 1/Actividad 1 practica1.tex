@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\documentclass[fleqn, 10pt]{article}
+
+
+% Paquetes necesarios
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm, amsmath}
+\usepackage{nccmath} %Para centrar ecuaciones
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+% Personalizo mi alfabeto
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\newcommand{\Lb}{\pazocal{L}}
+
+% Definimos los entornos para definiciones, teoremas, etc...
+\theoremstyle{plain}
+\newtheorem{proposicion}{Proposición}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{example}{Ejemplo}[section]
+
+%Definimos el título
+\title{Teoría de Autómatas y Lenguajes Formales\\[.4\baselineskip]Práctica 1: Latex y expresiones regurales}
+\author{Athenea, Martin Moreno}
+\date{\today}
+
+%Comienzo del documento
+\begin{document}
+
+%Generamos el título
+\maketitle
+
+\section{Potencia de una relación $R^n$}
+
+\begin {definition}
+Given $ R \subseteq A \times A $,
+
+\begin{center}
+$ R^n = \begin{cases}
+R & n=1 \\
+\left\{(a,b) \suchthat \exists x \in A, (a,x)\in R^{n-1}\wedge (x,b)\in R\right\} & n > 1
+
+\end{cases}$
+\end{center}
+
+\end {definition}
+
+\begin{example}
+Given the binary relation $R = \{(1, 1), (1, 2), (2, 3),(3,4)\}$
+
+
+\qquad $R^3 = \{(1, 1), (1, 2), (1, 3),(1,4)\}$
+
+
+\end{example}
+
+
+\end{document}
