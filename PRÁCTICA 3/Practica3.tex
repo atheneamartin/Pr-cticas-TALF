@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{whilecode2}
+
+\documentclass[fleqn, 10pt]{article}
+
+
+% Paquetes necesarios
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm, amsmath}
+\usepackage{nccmath} %Para centrar ecuaciones
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+% Personalizo mi alfabeto
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\newcommand{\Lb}{\pazocal{L}}
+
+% Definimos los entornos para definiciones, teoremas, etc...
+\theoremstyle{plain}
+\newtheorem{proposicion}{Proposición}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{example}{Ejemplo}[section]
+
+%Definimos el título
+\title{Teoría de Autómatas y Lenguajes Formales\\[.4\baselineskip]Práctica 3: Turing Machine, recursive functions and WHILE language}
+\author{Athenea, Martin Moreno}
+\date{\today}
+
+%Comienzo del documento
+\begin{document}
+
+%Generamos el título
+\maketitle
+
+\section{Define the TM solution of exercise 3.4 of the problem list and test its correct behaviour}
+
+\begin{example}
+Máquina de Turing en JFLAP
+\begin{figure}
+    \centering
+    \includegraphics[width=.72\textwidth]{MT.png}
+    \caption{Máquina de Turing}
+    \label{fig:my_label}
+\end{figure}
+\end{example}
+
+\newpage
+\section{Define a recursive function for the sum of three values}
+
+\begin{definition}{Composition \translation{composición de funciones}}
+
+Let $m>0, k\geq0 $ and the functions: 
+
+$g:\mathbb{N}^m \to \mathbb{N}$
+
+$h_1, \dots, h_m: \mathbb{N}^k \to \mathbb{N}$
+
+If the function $f:\mathbb{N}^k\to \mathbb{N}$ is
+\begin{center}
+    $f(\vec{n})=g(h_1(\vec{n}), \dots, h_m(\vec{n})) $
+\end{center}
+then $f$ is a composition of $g$ and $h_1$, \dots, $h_m$, 
+expressed as $f(\vec{n})=g(h_1, \dots, h_m)(\vec{n})$, or simply $f=g(h_1, \dots, h_m)$.
+\end{definition}
+
+\begin{definition}{Primitive recursion \translation{recursión primitiva}}
+\newline Let $k\geq 0$ and the functions
+\newline $g:\mathbb{N}^k \to \mathbb{N}$
+\newline $h:\mathbb{N}^{k+2} \to \mathbb{N}$
+\newline If the function $f:\mathbb{N}^{k+1} \to \mathbb{N}$ is
+\begin{center}
+    $f(\vec{n},m)=\left\{ 
+\begin{array}{lcc}
+    g(\vec{n})                          & \text{if} & m=0\\
+    h(\vec{n},m-1,f(\vec{n},m-1)) & \text{if} & m>0 
+\end{array}\right.$
+\end{center}
+
+then $f$ is obtained from $g$ and $h$ by primitive recursion.
+
+We will express it as $f(\vec{n})=\rec{g}{h}(\vec{n})$, or simply $f=\rec{g}{h}$.
+\end{definition}
+
+\begin{example}
+\begin{center}
+$add3 = \langle \langle \pi^1_1 | successor_3 \rangle | successor_4 \rangle $
+\end{center}
+\end{example}
+
+\newpage
+\begin{example}
+Función recursiva en Octave
+\begin{figure}
+    \centering
+    \includegraphics[width=.72\textwidth]{recursiva.png}
+    \caption{Suma de tres números}
+    \label{fig:my_label}
+\end{figure}
+\end{example}
+
+\newpage
+\section{Implement a WHILE program that computes the sum of three values, you must use an auxiliary variable that accumulates the result of the sum}
+
+\begin{whilecode}[H]
+$X_4\Assig X_1$\;
+ \While{$X_2 \not = 0$}{
+
+  $X_4 \Assig X_4 + 1$\;
+  $X_2 \Assig X_2 - 1$\;
+
+ }
+ 
+  \While{$X_3 \not = 0$}{
+
+  $X_4 \Assig X_4 + 1$\;
+  $X_3 \Assig X_3 - 1$\;
+
+ }
+ 
+ $X_1\Assig X_4$\;
+
+\end{whilecode}
+
+
+
+\end{document}

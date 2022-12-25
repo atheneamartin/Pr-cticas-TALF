@@ -1,0 +1,113 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{whilecode2}
+
+\documentclass[fleqn, 10pt]{article}
+
+
+% Paquetes necesarios
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm, amsmath}
+\usepackage{nccmath} %Para centrar ecuaciones
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+% Personalizo mi alfabeto
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\newcommand{\Lb}{\pazocal{L}}
+
+% Definimos los entornos para definiciones, teoremas, etc...
+\theoremstyle{plain}
+\newtheorem{proposicion}{Proposición}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{example}{Ejemplo}[section]
+
+%Definimos el título
+\title{Teoría de Autómatas y Lenguajes Formales\\[.4\baselineskip]Practice 4
+Program Numbering and EXWHILE}
+\author{Athenea, Martín Moreno}
+\date{\today}
+
+%Comienzo del documento
+\begin{document}
+
+%Generamos el título
+\maketitle
+
+\section{Create the simplest WHILE program that computes the diverge function (with zero arguments) and compute the codification of its code}
+
+\begin{whilecode}[H]
+$X_1\Assig X_1 + 1$\;
+ \While{$X_1 \not = 0$}{
+
+  $X_1 \Assig X_1 + 1$\;
+
+ }
+ \end{whilecode}
+ 
+ \begin{figure}
+    \centering
+    \includegraphics[width=.72\textwidth]{debbuger.png}
+    \caption{Debbuger}
+    \label{fig:my_label}
+\end{figure}
+ 
+  \begin{figure}
+    \centering
+    \includegraphics[width=.72\textwidth]{code2n.png}
+    \caption{CODE2N}
+    \label{fig:my_label}
+\end{figure}
+
+
+
+\newpage
+\section{Create an Octave script that enumerates all the vectors}
+
+
+
+\begin{center}
+\begin{verbatim}
+
+function printNvectors(N)
+for i=0:N-1
+disp([’(’ num2str(godeldecoding(i)) ’)’])
+endfor
+end
+\end{verbatim}
+\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=.72\textwidth]{printvectors.png}
+    \caption{printNvectors}
+    \label{fig:my_label}
+\end{figure}
+
+
+\newpage
+\section{Create an Octave script that enumerates all the WHILE programs}
+
+\begin{center}
+\begin{verbatim}
+function printNwhilePrograms(N)
+for i=0:N-1
+disp(N2WHILE(i))
+endfor
+end
+
+
+\end{verbatim}
+\end{center}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.72\textwidth]{printwhiles.png}
+    \caption{printNwhilesPrograms}
+    \label{fig:my_label}
+\end{figure}
+
+
+\end{document}
+
